@@ -24,7 +24,7 @@ namespace AbaixoAsFakesApi.Data
         {
             builder.ToTable(nameof(Usuario)).HasKey(e => e.Id);
             builder.Property(x => x.Nome).HasMaxLength(50).IsRequired();
-            builder.Property(x => x.Senha).HasMaxLength(30).IsRequired();
+            builder.Property(x => x.senhaString).HasMaxLength(30).IsRequired();
             builder.Property(x => x.Role).HasMaxLength(1);
         }
     }
