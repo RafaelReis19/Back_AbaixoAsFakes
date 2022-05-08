@@ -1,18 +1,22 @@
 ﻿using AbaixoAsFakesApi.Models.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace AbaixoAsFakesApi.Models
 {
     public class Voto
     {
-        //[Key]
-        public int idVoto { get; set; }
-        public int idade { get; set; }
-        public int idNoticias { get; set; }
-        public TiposVotoEnum idTipoVoto { get; set; }
-        public FormacaoAcademicaEnum idFormacaoAcademica { get; set; }
+        public int Id { get; set; }
+
+        public int IdNoticia { get; set; }
+
+        [JsonIgnore]
+        public Noticia Noticia { get; set; }
+
+        public int IdUsuario { get; set; }
+
+        [JsonIgnore]
+        public Usuario Usuario { get; set; }
+
+        public TiposVotoEnum TipoVoto { get; set; }
     }
 }

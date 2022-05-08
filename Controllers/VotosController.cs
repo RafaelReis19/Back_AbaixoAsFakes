@@ -1,10 +1,11 @@
 ﻿using AbaixoAsFakesApi.Data;
 using AbaixoAsFakesApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace AbaixoAsFakesApi.Controllers
@@ -14,42 +15,42 @@ namespace AbaixoAsFakesApi.Controllers
     public class VotosController : ControllerBase
     {
         private readonly DataContext _context;
-        private readonly IConfiguration _configuration;
+
         public VotosController(DataContext context, IConfiguration configuration)
         {
             _context = context;
-            _configuration = configuration;
         }
 
-        /* [HttpPost("Registrar")]
-        public async Task<IActionResult> RegistrarVoto(Voto newVoto)
+        [Authorize]
+        [HttpPost("Registrar")]
+        public async Task<IActionResult> RegistrarVoto(Voto voto)
         {
             try
             {
+                if (voto == null)
+                    throw new ArgumentNullException("Voto inválido");
 
+                voto.IdUsuario = ObterIdUsuario();
 
-                //novaNot.idUsuario = _context.Usuarios.Find();
+                if (await _context.Usuarios.AnyAsync(x => x.Id == voto.IdUsuario) == false)
+                    throw new ArgumentNullException("Usuário inválido");
 
-                 //if(novaNot.idUsuario1 != null)
-                //{
-                    //novaNot.idUsuario1 = _context.Usuarios.FirstOrDefault(uBusca => 
-                  //  uBusca.idUsuario == ObterUsuario());
-                //}
+                if(await _context.Noticias.AnyAsync(x => x.Id == voto.IdNoticia) == false)
+                    throw new ArgumentNullException("Notícia não encontrada");
 
-                await _context.Votos.AddAsync(newVoto);
+                await _context.Votos.AddAsync(voto);
                 await _context.SaveChangesAsync();
 
-                //return CreatedAtAction(nameof(GetTodoItem) = new { id = user.idUsuario }, user);
-                return Ok(newVoto.idTipoVoto);
+                return Ok(voto.TipoVoto);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
 
                 return BadRequest(ex.Message);
             }
         }
 
-        //[AllowAnonymous]
+        [Authorize]
         [HttpGet("GetAll")]
         public async Task<IActionResult> Get()
         {
@@ -58,11 +59,16 @@ namespace AbaixoAsFakesApi.Controllers
                 List<Voto> lista = await _context.Votos.ToListAsync();
                 return Ok(lista);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
 
                 return BadRequest(ex.Message);
             }
-        } */
+        }
+
+        private int ObterIdUsuario()
+        {
+            return int.Parse(User.FindFirst("Id").Value);
+        }
     }
 }

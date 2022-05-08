@@ -1,22 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
 
 namespace AbaixoAsFakesApi.Models
 {
     public class Noticia
     {
-        //[Key]
-        public int IdNoticia { get; set; }
+        public int Id { get; set; }
 
         public string Link { get; set; }
+
         public string Fonte { get; set; }
 
-        /* [JsonIgnore]
-        public Usuario? idUsuario1 { get; set; } */
+        public int IdUsuario{ get; set; }
+        
+        [JsonIgnore]
+        public Usuario Usuario { get; set; }
 
-        //public string comentario { get; set; }
+        public string Titulo { get; set; }
 
+        public string Descricao { get; set; }
     }
 }

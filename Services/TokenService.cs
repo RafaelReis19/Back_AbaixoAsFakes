@@ -19,8 +19,8 @@ namespace AbaixoAsFakesApi.Services
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.Name, user.Nome.ToString()),
-                    new Claim(ClaimTypes.Role, user.Role.ToString()),
-                    new Claim("teste", "Esse é um claim")
+                    new Claim("Id", user.Id.ToString()),
+                    new Claim("Formacao", user.FormacaoAcademica.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddHours(2),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

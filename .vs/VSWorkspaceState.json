@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Controllers"
   ],
-  "SelectedNode": "\\AbaixoAsFakesApi.sln",
+  "SelectedNode": "\\Controllers\\VotosController.cs",
   "PreviewInSolutionExplorer": false
 }

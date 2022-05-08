@@ -1,11 +1,12 @@
-﻿using System;
+﻿using AbaixoAsFakesApi.Data;
+using AbaixoAsFakesApi.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AbaixoAsFakesApi.Data;
-using AbaixoAsFakesApi.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 
 namespace AbaixoAsFakesApi.Controllers
 {
@@ -13,90 +14,101 @@ namespace AbaixoAsFakesApi.Controllers
     [Route("[controller]")]
     public class NoticiasController : ControllerBase
     {
-        IConfiguration _configuration;
         DataContext _context;
 
-        public NoticiasController(IConfiguration configuration, DataContext context)
+        public NoticiasController(DataContext context)
         {
-            _configuration = configuration;
             _context = context;
         }
 
-        /*
-         * [Authorize]
+        
+        [Authorize]
         [HttpGet("GetAll")]
         public async Task<IActionResult> Get()
         {
             try
             {
                 List<Noticia> lista = await _context.Noticias.ToListAsync();
-                var b = User.Identity?.Name;
-                var a = User.Claims.ToList();
-                return Ok(a);
+                return Ok(lista);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                
+
                 return BadRequest(ex.Message);
             }
         }
 
-        [AllowAnonymous]
-        [HttpGet("{idNot}")] //buscar pelo id
-        public async Task<IActionResult> GetSingle(int idNot)
+        [Authorize]
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetSingle(int id)
         {
             try
             {
-                Noticia n = await _context.Noticias //.Include(u => u.idUsuario1)
-                    .FirstOrDefaultAsync
-                    (nBusca => nBusca.idNoticia == idNot);
-                return Ok(n);
-        }
-            catch (System.Exception ex)
+                var noticia = await _context.Noticias.Where(u => u.Id == id).FirstOrDefaultAsync();
+
+                if (noticia == null)
+                    throw new ArgumentNullException("Notícia não encontrada");
+
+                return Ok(noticia);
+            }
+            catch (Exception ex)
             {
-                
+
                 return BadRequest(ex.Message);
             }
         }
 
-        //[AllowAnonymous]
+        [Authorize]
         [HttpPost("Registrar")]
-        public async Task<IActionResult> RegistrarNoticia(Noticia novaNot)
+        public async Task<IActionResult> RegistrarNoticia(Noticia noticia)
         {
             try
             {
-                //novaNot.idUsuario = _context.Usuarios.Find();
-                await _context.Noticias.AddAsync(novaNot);
+                if (noticia == null)
+                    throw new ArgumentNullException("Notícia inválida");
+
+                noticia.IdUsuario = ObterIdUsuario();
+
+                if (_context.Usuarios.Select(x => x.Id == noticia.IdUsuario).First() == false)
+                    throw new ArgumentNullException("Usuário Inválido");
+
+                await _context.Noticias.AddAsync(noticia);
                 await _context.SaveChangesAsync();
-                //return CreatedAtAction(nameof(GetTodoItem) = new { id = user.idUsuario }, user);
-                return Ok(novaNot.idNoticia);
+
+                return Ok(noticia.Id);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
-        private int ObterUsuario()
+
+        private int ObterIdUsuario()
         {
-            return int.Parse(_httpContextAcessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            return int.Parse(User.FindFirst("Id").Value);
         }
 
-        [HttpDelete("{idNot}")]
-        public async Task<IActionResult> Delete(int idNot)
+        [Authorize]
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete([FromRoute]int id)
         {
             try
             {
-                Noticia nRemover = await _context.Noticias.FirstOrDefaultAsync(n => n.idNoticia == idNot);
-                _context.Noticias.Remove(nRemover);
-                int linhasAfetadas = await _context.SaveChangesAsync();
-                return Ok(linhasAfetadas);
+                var noticia = await _context.Noticias.FirstOrDefaultAsync(n => n.Id == id);
+
+                if (noticia == null)
+                    throw new ArgumentNullException("Essa notícia não existe.");
+
+                _context.Noticias.Remove(noticia);
+
+                await _context.SaveChangesAsync();
+
+                return NoContent();
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
-        */
-
     }
 }
