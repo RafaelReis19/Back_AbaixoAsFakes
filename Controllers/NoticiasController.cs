@@ -103,7 +103,8 @@ namespace AbaixoAsFakesApi.Controllers
 
                 await _context.SaveChangesAsync();
 
-                return NoContent();
+                return Ok();
+                //return NoContent();
             }
             catch (Exception ex)
             {
