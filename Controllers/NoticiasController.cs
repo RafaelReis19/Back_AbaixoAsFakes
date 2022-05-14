@@ -45,6 +45,7 @@ namespace AbaixoAsFakesApi.Controllers
             try
             {
                 var noticia = await _context.Noticias.Where(u => u.Id == id).FirstOrDefaultAsync();
+                //var noticia = await _context.Noticias.Where(u => u.Nome == nome).FirstOrDefaultAsync();
 
                 if (noticia == null)
                     throw new ArgumentNullException("Notícia não encontrada");
@@ -69,8 +70,8 @@ namespace AbaixoAsFakesApi.Controllers
 
                 noticia.IdUsuario = ObterIdUsuario();
 
-                if (_context.Usuarios.Select(x => x.Id == noticia.IdUsuario).First() == false)
-                    throw new ArgumentNullException("Usuário Inválido");
+                //if (_context.Usuarios.Select(x => x.Id == noticia.IdUsuario).First() == false)
+                  //  throw new ArgumentNullException("Usuário Inválido");
 
                 await _context.Noticias.AddAsync(noticia);
                 await _context.SaveChangesAsync();
@@ -86,6 +87,11 @@ namespace AbaixoAsFakesApi.Controllers
         private int ObterIdUsuario()
         {
             return int.Parse(User.FindFirst("Id").Value);
+        }
+
+        private string ObtU()
+        {
+            return string.Format(User.FindFirst("Nome").Value);
         }
 
         [Authorize]

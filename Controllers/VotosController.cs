@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AbaixoAsFakesApi.Controllers
@@ -42,6 +43,29 @@ namespace AbaixoAsFakesApi.Controllers
                 await _context.SaveChangesAsync();
 
                 return Ok(voto.TipoVoto);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [Authorize]
+        [HttpGet("{idNot}")]
+        public async Task<IActionResult> Get(int idNot)
+        {
+            try
+            {
+                //int count;
+
+                var votos = await _context.Votos.Where(u => u.IdNoticia == idNot).CountAsync();//.FirstOrDefaultAsync();
+                //var noticia = await _context.Noticias.Where(u => u.Nome == nome).FirstOrDefaultAsync();
+
+                if (votos == null)
+                    throw new ArgumentNullException("Notícia não encontrada");
+
+                return Ok(votos);
             }
             catch (Exception ex)
             {
