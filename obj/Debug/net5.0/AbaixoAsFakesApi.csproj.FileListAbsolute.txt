@@ -149,3 +149,6 @@ C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\bin\Debug\net5.0\publish\Aba
 C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\bin\Debug\net5.0\publish\AbaixoAsFakesApi.runtimeconfig.json
 C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\bin\Debug\net5.0\publish\appsettings.Development.json
 C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\bin\Debug\net5.0\publish\appsettings.json
+C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\bin\Debug\net5.0\Antlr3.Runtime.dll
+C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\bin\Debug\net5.0\Polly.dll
+C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\bin\Debug\net5.0\WebGrease.dll

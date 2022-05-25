@@ -1,4 +1,5 @@
 ﻿using AbaixoAsFakesApi.Models.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace AbaixoAsFakesApi.Models
@@ -18,5 +19,9 @@ namespace AbaixoAsFakesApi.Models
         public Usuario Usuario { get; set; }
 
         public TiposVotoEnum TipoVoto { get; set; }
+
+        [NotMapped]
+        [JsonIgnore]
+        public int Formacao { get; set; }
     }
 }
