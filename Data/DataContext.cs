@@ -19,6 +19,7 @@ namespace AbaixoAsFakesApi.Data
             modelBuilder.ApplyConfiguration(new UsuarioMap());
             modelBuilder.ApplyConfiguration(new NoticiaMap());
             modelBuilder.ApplyConfiguration(new VotoMap());
+            //modelBuilder.Entity<Voto>()
         }
     }
 

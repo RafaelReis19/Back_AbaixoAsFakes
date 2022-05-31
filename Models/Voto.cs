@@ -15,7 +15,7 @@ namespace AbaixoAsFakesApi.Models
 
         public int IdUsuario { get; set; }
 
-        [JsonIgnore]
+        //[JsonIgnore]
         public Usuario Usuario { get; set; }
 
         public TiposVotoEnum TipoVoto { get; set; }
@@ -23,5 +23,8 @@ namespace AbaixoAsFakesApi.Models
         [NotMapped]
         [JsonIgnore]
         public int Formacao { get; set; }
+
+
+
     }
 }

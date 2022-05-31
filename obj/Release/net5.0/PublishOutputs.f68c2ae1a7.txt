@@ -5,6 +5,7 @@ C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\PubTmp\Ou
 C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\PubTmp\Out\AbaixoAsFakesApi.deps.json
 C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\PubTmp\Out\AbaixoAsFakesApi.runtimeconfig.json
 C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\PubTmp\Out\AbaixoAsFakesApi.pdb
+C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\PubTmp\Out\Antlr3.Runtime.dll
 C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\PubTmp\Out\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\PubTmp\Out\Microsoft.Data.SqlClient.dll
 C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\PubTmp\Out\Microsoft.EntityFrameworkCore.dll
@@ -20,6 +21,7 @@ C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\PubTmp\Ou
 C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\PubTmp\Out\Microsoft.IdentityModel.Tokens.dll
 C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\PubTmp\Out\Microsoft.OpenApi.dll
 C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\PubTmp\Out\Newtonsoft.Json.dll
+C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\PubTmp\Out\Polly.dll
 C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
 C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -28,6 +30,7 @@ C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\PubTmp\Ou
 C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll
 C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\PubTmp\Out\System.Runtime.Caching.dll
 C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\PubTmp\Out\System.Security.Cryptography.ProtectedData.dll
+C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\PubTmp\Out\WebGrease.dll
 C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\PubTmp\Out\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\PubTmp\Out\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\PubTmp\Out\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll

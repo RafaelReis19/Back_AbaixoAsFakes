@@ -67,10 +67,14 @@ namespace AbaixoAsFakesApi.Controllers
                     .ToListAsync();//.FirstOrDefaultAsync();
                 /*Include(User.FindFirst("Formacao").Value).*/
 
+               //List<Usuario> contagem = votos.Select( x => x.Usuario).ToList();
+
                 //var noticia = await _context.Noticias.Where(u => u.Nome == nome).FirstOrDefaultAsync();
 
                 if (votos == null)
                     throw new ArgumentNullException("Notícia não encontrada");
+
+                //int teste = votos.Where(x => x.TipoVoto == Models.Enums.TiposVotoEnum.FAKE).Count();
 
                 return Ok(votos);
             }
@@ -81,14 +85,55 @@ namespace AbaixoAsFakesApi.Controllers
             }
         }
 
-        //Tentativa falha de executar a procedure
-        [HttpGet("{idNoti}")]
-        public async /*static*/ Task<List<Voto>> ExecProcedure(int idNoti)
+        [Authorize]
+        [HttpGet("ContagemVoto{idNot}")]
+        public async Task<IActionResult> GetComU(int idNot)
         {
-            var param = new SqlParameter("@NOTICIA", idNoti);
-            var resul = await _context.Votos.FromSqlRaw("AF_SP_VOTOSPNOTICIA @NOTICIA", param).ToListAsync();
-            return resul;
+            try
+            {
+                //int count;
+                var votos = await _context.Votos.Where(u => u.IdNoticia == idNot)
+                    .Include(u => u.Usuario)
+                    .ToListAsync();//.FirstOrDefaultAsync();
+                /*Include(User.FindFirst("Formacao").Value).*/
+
+                List<Usuario> contagem = votos.Select(x => x.Usuario).ToList();
+
+                //var noticia = await _context.Noticias.Where(u => u.Nome == nome).FirstOrDefaultAsync();
+
+                if (votos == null)
+                    throw new ArgumentNullException("Notícia não encontrada");
+
+                int teste = votos.Where(x => x.TipoVoto == Models.Enums.TiposVotoEnum.FAKE).Count();
+
+                return Ok(contagem);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
         }
+
+        //Tentativa falha de executar a procedure
+        //[HttpGet("ContagemVoto/{idNoti}")]
+        //public async /*static*/ Task<List<Voto>> ExecProcedure(int idNoti)
+        //{
+        //    var param = new SqlParameter("@NOTICIA", idNoti);
+        //    var resul = await _context.Votos.FromSqlRaw("AF_SP_VOTOSPNOTICIA @NOTICIA", param).ToListAsync();
+        //    return resul;
+        //}
+
+
+
+        //public void ContagemVotosProc(int idNotic)
+        //{
+        //    Database.ExecuteSqlCommand("EXEC GradeEntry @ID, @name, @salary",
+        //        new SqlParameter("@NOTICIA", idNotic)
+        //        //new SqlParameter("@name", Name),
+        //        //new SqlParameter("@salary", Salary),
+        //    )
+        //}
 
         //SqlServerRetryingExecutionStrategy
 

@@ -57,3 +57,6 @@ C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\AbaixoAsF
 C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\ref\AbaixoAsFakesApi.dll
 C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\AbaixoAsFakesApi.pdb
 C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\obj\Release\net5.0\AbaixoAsFakesApi.genruntimeconfig.cache
+C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\bin\Release\net5.0\Antlr3.Runtime.dll
+C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\bin\Release\net5.0\Polly.dll
+C:\testTccU\BackC\AbaixoAsFakesApi\AbaixoAsFakesApi\bin\Release\net5.0\WebGrease.dll
